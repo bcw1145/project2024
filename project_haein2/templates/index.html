@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키오스크 메인 화면</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="../img/main_logo.jpeg" alt="안내 이미지">
+        <div class="buttons">
+            <button class="buttonss" onclick ="handleSelection('매장')">매장</button>
+            <button class="buttonss" onclick ="handleSelection('포장')">포장</button>
+        </div>
+        <script>
+            function handleSelection(selection) {
+                let value;
+                console.log("Selection: ", selection); // 디버깅을 위한 로그
+                if (selection == '매장') {
+                    value = 1;
+                } else if (selection == '포장') {
+                    value = 2;
+                }
+                location.href = '/kiosk_menu?value=' + value;
+                return location.href
+            }
+        </script>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,278 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(to bottom, #8db9ff, #d6f2ff);
+  background-size: cover; /* 배경을 화면에 맞추도록 설정 */
+  background-repeat: no-repeat; /* 배경이 반복되지 않도록 설정 */
+  min-height: 100vh; /* 화면 전체 높이를 채우도록 설정 */
+}
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 10px; /* 이미지에도 둥근 모서리 추가 */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.item {
+  background-color: #ffffff;
+  border: 2px solid #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  padding: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.item img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.item .name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.item .price, .item .stock {
+  font-size: 16px;
+  color: #555;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.total-price {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column; /* 버튼을 세로로 배치 */
+  align-items: center;
+  gap: 15px;
+  width: 100%; 
+}
+
+.buttonss {
+  width: 80%; /* 가로 길이를 늘림 */
+  padding: 20px;
+  font-size: 22px; /* 폰트 크기 약간 증가 */
+  color: white;
+  background: #ff758c;
+  border: none;
+  border-radius: 10px; /* 버튼의 둥근 모서리 */
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s; /* 눌렀을 때 애니메이션 효과 추가 */
+}
+
+.buttonss:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.buttonss:active {
+  background-color: #ffa1ba;
+  transform: scale(1.01); /* 살짝 축소하여 눌린 효과 */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* 새 그림자 효과 추가 */
+}
+
+.button {
+  padding: 15px 20px;
+  font-size: 18px;
+  color: white;
+  background-color:#ff758c;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+  background-color: #ffa1ba;
+  transform: scale(1.01); /* 살짝 축소하여 눌린 효과 */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* 새 그림자 효과 추가 */
+}
+
+.button.cancel {
+  background-color: gray;
+}
+
+.button.cancel:active {
+  background-color: darkgray;
+  transform: scale(1.01); /* 살짝 축소하여 눌린 효과 */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* 새 그림자 효과 추가 */
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 80%;
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 1000;
+  border: 2px solid #ff758c;
+}
+
+.popup.active {
+  display: block;
+}
+
+.popup img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.popup .name, .popup .stock, .popup .description {
+  margin: 10px 0;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.quantity-controls button {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff758c;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: background-color 0.2s;
+}
+
+.quantity-controls span {
+  width: 40px;
+  text-align: center;
+  font-size: 18px;
+}
+
+#cart-container {
+  text-align: left;
+  width: 100%;
+  max-width: 900px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+#cart-items {
+  list-style-type: none;
+  padding: 0;
+}
+
+#cart-items li {
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.order-number {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.5em;
+  color: #fff;
+  background-color: #ff758c;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+input {
+  color: #ff758c;
+  background: white;
+  text-align: center;
+  margin: 20px auto;
+  font-size: 2em;
+  display: block;
+  width: 100%;
+  border-radius: 6px;
+  border: 2px solid #ff758c;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.keypad {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.keypad button {
+  margin: 5px;
+  width: 30%;
+  height: 60px;
+  background: #ffffff;
+  border: 2px solid #ffa1ba;
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.keypad button.delete,
+.keypad button.submit {
+  background: #ff758c;
+  color: white;
+}
+
+.keypad button:active {
+  background-color: #ffa1ba;
+}

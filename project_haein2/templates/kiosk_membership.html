@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>멤버쉽 페이지</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="grid">  
+      <!-- 회원번호 입력 -->  
+      <div class="item" onclick="showMembershipPopup()">
+        <h2>회원 확인</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- 전화번호 입력 팝업 HTML -->
+  <div class="popup" id="membership-popup">
+    <span class="close-btn" onclick="hidePopup()">X</span>
+    <h2>회원 확인</h2>
+    <p>전화번호를 입력하세요</p>
+    <input type="text" class="keypad" id="numInput" disabled="disabled" />
+    <div id="keypad" class="keypad"></div>
+  </div>
+
+  <div id="cart-container">
+    <h2>장바구니</h2>
+    <ul id="cart-items"></ul>
+    <P id="customer-level">등급 : </P>
+    <P id="discount-amount">할인금액 : </P>
+    <P id="current-point">사용포인트 : </P>
+    <div class="footer">  
+      <div class="total-price">최종 금액 : 0원</div>  
+      <div>  
+        <button class="button" onclick="gotopayment()">결제하기</button>  
+        <button class="button cancel" onclick="gobackpage()">취소</button>  
+      </div>  
+    </div>  
+  </div>
+
+  <script src="../static/js/script.js"></script>
+  <script>
+    // JavaScript 코드 추가
+    function submitPhoneNumber() {
+      const phoneNumber = document.getElementById('numInput').value;
+      checkMembership(phoneNumber);
+    }
+  </script>
+</body>
+</html>

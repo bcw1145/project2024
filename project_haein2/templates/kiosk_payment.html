@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>결제 페이지</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>결제수단 선택</h1>
+    <div class="grid">  
+      <!-- 결제수단 선택 -->  
+      <div class="item" onclick="showPopup2()">
+        <h2>신용카드</h2>
+      </div>
+      <div class="item" onclick="showPopup2()">
+        <h2>네이버페이</h2>
+      </div>
+      <div class="item" onclick="showPopup2()">
+        <h2>카카오페이</h2>
+      </div>
+    </div>
+  </div>
+
+<!-- 결제 팝업 html -->
+<div class="popup" id="popup-sign">
+  <h2>결제</h2>
+  <p>결제수단을 입력해주세요</p>
+  <button class="button cancel" onclick="hidePopup()">취소</button>
+</div>
+
+  <script src="../static/js/script.js"></script>
+</body>
+</html>

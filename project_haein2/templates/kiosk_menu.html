@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키오스크 메뉴 화면</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="grid">
+      <!-- 메뉴 항목을 동적으로 생성 -->
+      {% for item in menu_items %}
+      <div class="item" onclick="showPopup1('{{ item.b_name }}', '{{ item.b_price }}', '{{ item.b_inventory }}', '{{ item.b_description }}', '/img/{{ item.b_name }}.jpg')">
+        <img src="/img/{{ item.b_name }}.jpg" alt="{{ item.b_name }}" class="item-img">
+        <div class="name">{{ item.b_name }}</div>
+        <div class="price">₩{{ item.b_price }}</div>
+        <div class="stock">재고: {{ item.b_inventory }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- 메뉴 팝업창 HTML -->
+  <div class="popup" id="popup-item">
+    <img id="popup-img" src="popup-img" alt="상품 이미지">
+    <div class="name" id="popup-name">AAA</div>
+    <div class="stock" id="popup-stock"></div>
+    <div class="description" id="popup-description"></div>
+    <div class="price" id="popup-price"></div>
+    <div class="quantity-controls">
+      <button onclick="updateQuantity(-1)">-</button>
+      <span id="quantity">1</span>
+      <button onclick="updateQuantity(1)">+</button>
+    </div>
+    <button class="button" onclick="addToCart()">장바구니 담기</button>
+    <button class="button cancel" onclick="hidePopup()">닫기</button>
+  </div>
+
+  <!-- 회원 질의 팝업 html -->
+  <div class="popup" id="popup-sign">
+    <h2>회원 확인</h2>
+    <p>회원이십니까?</p>
+    <button class="button" onclick="confirmsign()">예</button>
+    <button class="button" onclick="gotopayment()">아니오</button>
+    <button class="button cancel" onclick="hidePopup()">닫기</button>
+  </div>
+
+  <!-- 장바구니 html -->
+  <div id="cart-container">
+    <h2>장바구니</h2>
+    <ul id="cart-items"></ul>
+    <div class="footer">
+      <div class="total-price">총 금액 : 0원</div>
+      <div>
+        <button class="button" onclick="gotosign()">결제하기</button>
+        <button class="button cancel" onclick="gobackpage()">취소</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript 코드에서 사용할 items 변수 정의 -->
+  <script>
+    const items = {};
+    {% for item in menu_items %}
+    items["{{ item.b_name }}"] = {
+      price: {{ item.b_price }},
+      stock: {{ item.b_inventory }},
+      description: "{{ item.b_description }}"
+    };
+    {% endfor %}
+  </script>
+
+<script>
+  // value 값을 JavaScript에서 사용
+  const value = {{ value }};
+  console.log("Received value:", value);  // 이 값이 제대로 출력되는지 콘솔에서 확인
+
+  // 이 부분에 나머지 스크립트를 추가하세요.
+</script>
+
+  <script src="../static/js/script.js"></script>
+</body>
+</html>
